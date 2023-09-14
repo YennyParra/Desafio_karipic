@@ -1,0 +1,27 @@
+<div id="<%= dom_id photo %>">
+
+<div class="card" style="width: 35rem">
+<% if photo.images.present? %>
+  <%= image_tag photo.images.url, class: "card-img-top rounded" %>
+<%end %>
+ <div class= "card-body glass">
+  <p>
+    <strong>Description:</strong>
+    <%= photo.description %>
+  </p>
+</div>
+  <p>
+    <strong>User:</strong>
+    <%= photo.user_id %>
+    </p>
+<div class= "container">
+<% photo.comments.each do |comment| %>
+ <p class= "comment-conten text-dark"></p>
+ <%= comment.content %>
+ <% end %>
+</div>
+
+
+</div>
+
+</div>

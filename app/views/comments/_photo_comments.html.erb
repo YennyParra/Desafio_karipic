@@ -1,0 +1,15 @@
+<div>
+    <% @comments.each do |comment| %>
+        <p>
+            <% if comment.user %>
+            <%= image_tag comment.user.images, class: "user-image" %>
+            <%= comment.user.username %>: <br>
+
+            <%= comment.content %>
+            <% else %>
+             <strong>User unknown:</strong>
+             <%= comment.content %>
+             <% end %>
+        </p>
+    <% end %>
+</div>

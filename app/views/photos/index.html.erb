@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Post</h1>
+
+<div id="Photo">
+<% if @photos.present? %>
+  <% @photos.each do |photo| %>
+    <%= render photo %>
+    <p>
+      <%= link_to "Show this Post", photo %>
+    </p>
+  <% end %>
+  <% else %>
+  <p> No Hay Fotos disponibles </p>
+<%end%>
+</div>
+
+<%= link_to "New Post", new_photo_path %>
