@@ -6,27 +6,41 @@ class CommentsController < ApplicationController
     def edit
     end
   
+
     # POST /comments or /comments.json
+    def index 
+      @commets = Comment.all
+    end  
+    #Get/comments/1 or/comments/1.json
+    def show
+     #@comment = Comment.find(params[:id]) 
+    end
+
+
+    # GET /comments/new
+    def new
+      @comment = Comment.new
+    
+    # POST /comments or /comments.json 
     def create
         @photo = Photo.find(params[:comment][:photo_id])
         @comment = Comment.new(comment_params)
-        @comment.user = current_user
-
+        if user_signed_in? 
+          @comment.user = current_user
+        end
+        
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to post_path(@post.id), notice: "Comment was successfully created." }
+          format.html { redirect_to photo_path(@photo.id), notice: "Comment was successfully created." }
           format.json { render :show, status: :created, location: @comment }
         else
           Rails.logger.debug "Comment errors: #{@comment.errors.full_messages}"
-          format.html { redirect_to post_path(@photo.id), notice: "Comment wasn't created." }
+          format.html { redirect_to photo_path(@photo.id), notice: "Comment wasn't created." }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
     end
   
-
-  
-
   
     private
       # Use callbacks to share common setup or constraints between actions.
@@ -40,4 +54,4 @@ class CommentsController < ApplicationController
     end
   
 
-end
+

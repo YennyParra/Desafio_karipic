@@ -6,6 +6,6 @@ class User < ApplicationRecord
          has_many :photos
          has_many :comments
          has_one_attached :avatar
-         has_many :images, as: :imageable
+         #has_many :images, as: :imageable
          enum :role, [:normal_user, :admin]
 end

@@ -76,3 +76,5 @@ gem "devise", "~> 4.9"
 gem "bootstrap", "~> 5.2"
 
 gem "figaro", "~> 1.2"
+
+gem "aws-sdk-s3"
