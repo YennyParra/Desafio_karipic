@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     # POST /comments or /comments.json
     def index 
-      @commets = Comment.all
+     # @commets = Comment.all
     end  
     #Get/comments/1 or/comments/1.json
     def show
@@ -20,7 +20,8 @@ class CommentsController < ApplicationController
     # GET /comments/new
     def new
       @comment = Comment.new
-    
+    end 
+
     # POST /comments or /comments.json 
     def create
         @photo = Photo.find(params[:comment][:photo_id])
@@ -40,8 +41,7 @@ class CommentsController < ApplicationController
         end
       end
     end
-  
-  
+    
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_comment
@@ -52,6 +52,4 @@ class CommentsController < ApplicationController
     def comment_params
         params.require(:comment).permit(:content, :photo_id, :user_id)
     end
-  
-
-
+  end

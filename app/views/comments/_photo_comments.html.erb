@@ -2,9 +2,8 @@
     <% @comments.each do |comment| %>
         <p>
             <% if comment.user %>
-            <%= image_tag comment.user.images, class: "user-image" %>
+            <%= image_tag comment.user.photo.url, class: "user-image" %>
             <%= comment.user.username %>: <br>
-
             <%= comment.content %>
             <% else %>
              <strong>User unknown:</strong>
